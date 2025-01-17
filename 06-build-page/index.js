@@ -22,11 +22,8 @@ function copyAssets(directoryPath, newDirectoryPath) {
   return fs.promises.readdir(directoryPath, 'utf-8').then((list) => {
     let promises = list.map((file) => {
       const newPath = path.join(directoryPath, file);
-      console.log('newPath', newPath);
-      console.log('file', file);
       return fs.promises.stat(newPath).then((stats) => {
         const newDistPath = path.join(newDirectoryPath, file);
-        console.log('newDistPath', newDistPath);
         if (stats.isDirectory())
           return createDirectory(newDistPath).then(() =>
             copyAssets(newPath, newDistPath),

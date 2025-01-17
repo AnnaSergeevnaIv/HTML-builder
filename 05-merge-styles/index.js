@@ -24,6 +24,5 @@ fs.promises
 
 function writeStyles() {
   let entireStyle = styles.join('');
-  console.log(styles);
   writeStream.write(entireStyle);
 }
